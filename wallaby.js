@@ -1,8 +1,12 @@
+var path = require('path');
 var wallabyWebpack = require('wallaby-webpack');
-var webpackPostprocessor = wallabyWebpack({});
 
 module.exports = function (wallaby) {
-
+  var webpackPostprocessor = wallabyWebpack({
+    resolve: {
+      modulesDirectories: [path.join(wallaby.projectCacheDir, 'src')],
+    },
+  });
   return {
     debug: true,
     files: [
